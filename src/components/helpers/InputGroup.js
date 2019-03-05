@@ -7,16 +7,16 @@ const InputGroup = (props) => {
           <label htmlFor={props.label}>{props.label}</label>
           <input type={props.type} className="form-control"
               name={props.name}
-              value={props.value}
-              onChange={props.onChange}
               className={
                   classnames('form-control', {
-                      'is-invalid': props.errors 
+                      'is-invalid': props.error
                   })
               }
+              defaultValue={props.value}
+              onChange={props.onChange}
           />
           <div className="invalid-feedback">
-            {props.errors}
+            {props.error}
           </div>
       </div>
   )

@@ -22,18 +22,18 @@ class AddContact extends Component {
 
         const {name, email, phone} = this.state;
 
-        if (name === "")
+        if (name == "")
         {
             this.setState({errors: {name: "Name can't be empty"}})
             return;
         }
 
-        if (email === "") {
+        if (email == "") {
             this.setState({ errors: { email: "Email can't be empty" } })
             return;
         }
 
-        if (phone === "") {
+        if (phone == "") {
             this.setState({ errors: { phone: "Phone can't be empty" } })
             return;
         }
@@ -54,6 +54,7 @@ class AddContact extends Component {
             phone: "",
             errors: {} 
         })
+        this.props.history.push("/");
     }
 
   render() {
@@ -65,33 +66,36 @@ class AddContact extends Component {
                 const {dispatch} = value;
                 return (
                     <div className="container">
-                        <div class="card">
-                            <div class="card-header">
+                        <div className="card">
+                            <div className="card-header">
                                 Add Contact
                             </div>
-                            <form method="POST" onSubmit={this.onSubmitForm.bind(this, dispatch)} >
+                            <form onSubmit={this.onSubmitForm.bind(this, dispatch)} >
                             <div class="card-body">
                                 <div class="card-text">
                                     <InputGroup 
                                      label="Name"
                                      type="text"
-                                     defaultValue={name}
+                                     name="name"
+                                     value={name}
                                      onChange={this.onChangeInput}
-                                     errors={errors.name}
+                                     error={errors.name}
                                     />
                                     <InputGroup 
                                      label="Email"
                                      type="email"
-                                     defaultValue={email}
+                                     name="email"
+                                     value={email}
                                      onChange={this.onChangeInput}
-                                     errors={errors.email}
+                                     error={errors.email}
                                     />
                                     <InputGroup 
                                      label="Phone"
                                      type="text"
-                                     defaultValue={phone}
+                                     name="phone"
+                                     value={phone}
                                      onChange={this.onChangeInput}
-                                     errors={errors.phone}
+                                     error={errors.phone}
                                     />
                                     <div className="form-group">
                                         <button type="submit" className="btn btn-primary">Add Contact</button>
